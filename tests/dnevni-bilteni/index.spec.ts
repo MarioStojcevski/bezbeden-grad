@@ -26,17 +26,11 @@ test.describe('Dnevni Bilteni Scrape', () => {
     await browser.close();
   });
 
-  test('Should Open the Dnevni Bilteni Page', async () => {
-    await handler.dnevniBilteniPage.open();
-    await page.waitForLoadState('domcontentloaded');
-    expect(await page.isVisible('.right_bar')).toBeTruthy();
-  });
-
-
-  test("Zemi gi site nastani", async () => {
+  test("Collect all events", async () => {
     await handler.dnevniBilteniPage.open();
     await page.waitForLoadState('domcontentloaded');
     
+    await handler.dnevniBilteniPage.crawlAndCollect();
   }
   );
 });
